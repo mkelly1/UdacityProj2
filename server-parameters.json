@@ -1,0 +1,22 @@
+[
+    {
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "Proj2"
+    },
+    {
+        "ParameterKey": "AMIID",
+        "ParameterValue": "ami-0ac73f33a1888c64a"
+    },
+    {
+        "ParameterKey": "EC2Type",
+        "ParameterValue": "t3.medium"
+    },
+    {
+        "ParameterKey": "EBSSize",
+        "ParameterValue": "10"
+    },
+    {
+        "ParameterKey": "KeyID",
+        "ParameterValue": "Proj2EC2"
+    }
+]
