@@ -1,4 +1,4 @@
-Description: Security Groups Servers Autoscale Groups
+Description: Security Groups Servers Autoscale Group
 
 Parameters:
   EnvironmentName:
@@ -66,7 +66,7 @@ Resources:
         Fn::ImportValue:
           Fn::Sub: "${EnvironmentName}-VPCID"
 
-  AutoScalingGroupLaunchConfig2:
+  AutoScalingGroupLaunchConfig3:
     Type: AWS::AutoScaling::LaunchConfiguration
     Properties: 
       AssociatePublicIpAddress: true
@@ -78,7 +78,7 @@ Resources:
       InstanceMonitoring: false
       InstanceType: !Ref EC2Type
       KeyName: !Ref KeyID
-      LaunchConfigurationName: AutoScalingGroupLaunchConfig2
+      LaunchConfigurationName: AutoScalingGroupLaunchConfig3
       SecurityGroups: 
         - Ref: WebServSecurityGroup
       UserData:
@@ -93,7 +93,7 @@ Resources:
   AutoScalingGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties: 
-      LaunchConfigurationName: !Ref AutoScalingGroupLaunchConfig2
+      LaunchConfigurationName: !Ref AutoScalingGroupLaunchConfig3
       MaxSize: '4'
       MinSize: '2'
       TargetGroupARNs: 
