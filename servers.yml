@@ -31,11 +31,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
-          DestinationSecurityGroupId: !Ref WebServSecurityGroup
-        - IpProtocol: tcp
-          FromPort: 8080
-          ToPort: 8080
-          DestinationSecurityGroupId: !Ref WebServSecurityGroup
+          CidrIp: 0.0.0.0/0
       SecurityGroupIngress: 
         - IpProtocol: tcp
           FromPort: 80
@@ -59,10 +55,6 @@ Resources:
           ToPort: 65535
           CidrIp: 0.0.0.0/0
       SecurityGroupIngress: 
-        - IpProtocol: tcp
-          FromPort: 8080
-          ToPort: 8080
-          CidrIp: 0.0.0.0/0
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
