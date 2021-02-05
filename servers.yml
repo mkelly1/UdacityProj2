@@ -48,33 +48,6 @@ Resources:
         Fn::ImportValue:
           !Sub "${EnvironmentName}-VPCID"
 
-  PublicSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: Allow http in and out. 
-      GroupName: WebServSecurityGroup
-      SecurityGroupEgress: 
-        - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
-          CidrIp: 0.0.0.0/0
-      SecurityGroupIngress: 
-        - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
-          SourceSecurityGroupId: !Ref ALBSecurityGroup
-      SecurityGroupIngress: 
-        - IpProtocol: tcp
-          FromPort: 0
-          ToPort: 65535
-          SourceSecurityGroupId: !Ref WebServSecurityGroup
-      Tags: 
-        - Key: name 
-          Value: !Sub ${EnvironmentName}-PubSecGrp
-      VpcId:
-        Fn::ImportValue:
-          Fn::Sub: "${EnvironmentName}-VPCID"
-
   WebServSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties: 
@@ -84,12 +57,12 @@ Resources:
         - IpProtocol: tcp
           FromPort: 0
           ToPort: 65535
-          DestinationSecurityGroupId: !Ref PublicSecurityGroup
+          CidrIp: 0.0.0.0/0
       SecurityGroupIngress: 
         - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
-          SourceSecurityGroupId: !Ref PublicSecurityGroup
+          FromPort: 8080
+          ToPort: 8080
+          CidrIp: 0.0.0.0/0
       Tags: 
         - Key: name 
           Value: !Sub ${EnvironmentName}-WebServSecGroup
@@ -125,8 +98,8 @@ Resources:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties: 
       LaunchConfigurationName: !Ref AutoScalingGroupLaunchConfig2
-      MaxSize: '6'
-      MinSize: '4'
+      MaxSize: '4'
+      MinSize: '2'
       TargetGroupARNs: 
         - Ref: ALBTargetGroup
       VPCZoneIdentifier: 
@@ -178,7 +151,7 @@ Resources:
       HealthCheckProtocol: HTTP
       HealthCheckTimeoutSeconds: 8
       HealthyThresholdCount: 2
-      Port: 80
+      Port: 8080
       Protocol: HTTP
       Tags: 
         - Key: name
