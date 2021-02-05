@@ -51,7 +51,7 @@ Resources:
       GroupName: WebServSecurityGroup
       SecurityGroupEgress: 
         - IpProtocol: tcp
-          FromPort: 0
+          FromPort: 80
           ToPort: 65535
           CidrIp: 0.0.0.0/0
       SecurityGroupIngress: 
