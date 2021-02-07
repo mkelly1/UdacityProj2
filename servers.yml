@@ -17,10 +17,6 @@ Parameters:
     Description: EBS volume size
     Type: String
 
-  KeyID:
-    Description: EC2 key
-    Type: String
-
 Resources:
   ALBSecurityGroup:
     Type: AWS::EC2::SecurityGroup
