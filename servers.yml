@@ -6,7 +6,7 @@ Parameters:
     Type: String
   
   AMIID:
-    Description: AMI ID linux 2
+    Description: AMI ID Ubuntu 18
     Type: String
 
   EC2Type:
@@ -51,7 +51,7 @@ Resources:
       GroupName: WebServSecurityGroup
       SecurityGroupEgress: 
         - IpProtocol: tcp
-          FromPort: 80
+          FromPort: 0
           ToPort: 65535
           CidrIp: 0.0.0.0/0
       SecurityGroupIngress: 
@@ -77,7 +77,6 @@ Resources:
       ImageId: !Ref AMIID
       InstanceMonitoring: false
       InstanceType: !Ref EC2Type
-      KeyName: !Ref KeyID
       LaunchConfigurationName: AutoScalingGroupLaunchConfig3
       SecurityGroups: 
         - Ref: WebServSecurityGroup
@@ -146,7 +145,7 @@ Resources:
       HealthCheckProtocol: HTTP
       HealthCheckTimeoutSeconds: 8
       HealthyThresholdCount: 2
-      Port: 8080
+      Port: 80
       Protocol: HTTP
       Tags: 
         - Key: name
