@@ -170,3 +170,11 @@ Outputs:
     Export:
       Name: !Sub ${EnvironmentName}-ALBDNS
 
+  ALBURL:
+    Description: Site URL (ALB URL)
+    Value: !Sub |
+      'http://'${!GetAtt: WebAppLoadBalancer.DNSName}
+    Export:
+      Name: !Sub ${EnvironmentName}-SiteURL
+
+
