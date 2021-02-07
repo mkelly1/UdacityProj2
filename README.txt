@@ -1,8 +1,8 @@
 Margo K Kelly
-Udacity Cloud DevOps Nanodegree Project 2
+Udacity Cloud DevOps Nanodegree Project 2 - CloudFormation
 02/07/2021
 Site URL: http://serve-applo-761nskpf4flr-1107228463.us-west-2.elb.amazonaws.com/
 
-Two cloudFormation templates along with their parameter files.
+Two AWS CloudFormation templates along with their parameter files.
 network.yml     VPC, Subnets
 servers.yml     Servers, Security Groups, ALB, routes
