@@ -172,9 +172,8 @@ Outputs:
 
   ALBURL:
     Description: Site URL (ALB URL)
-    Value: !Sub |
-      'http://'${!GetAtt: WebAppLoadBalancer.DNSName}
+    Value: !Sub
+      - http://${URL}
+      - { URL: !GetAtt AppLoadBalancer.DNSName }
     Export:
       Name: !Sub ${EnvironmentName}-SiteURL
-
-
