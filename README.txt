@@ -1,5 +1,5 @@
 Margo K Kelly
-Udacity Cloud DevOps Nanodegree Project 2 - CloudFormation
+Udacity Cloud DevOps Nanodegree Project 2 - IaC with CloudFormation
 02/07/2021
 
 Two AWS CloudFormation templates that create a simple web application along with the template's 
